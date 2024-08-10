@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:project/ui/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../models/hades_details_args.dart';
 import '../../../../../utils/app_assets.dart';
-import '../../../../../utils/app_style.dart';
 import '../../../home.dart';
 
 class HadethDetails extends StatefulWidget {
   static const String routeName = "hadeth_details";
 
-  HadethDetails({super.key});
+  const HadethDetails({super.key});
 
   @override
   State<HadethDetails> createState() => _HadethDetailsState();
@@ -19,15 +20,21 @@ class _HadethDetailsState extends State<HadethDetails> {
   Widget build(BuildContext context) {
     HadethDetailsArgs hadeth =
         ModalRoute.of(context)!.settings.arguments as HadethDetailsArgs;
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(AppAssets.lightBackground),
-          fit: BoxFit.cover,
+    return Consumer<ThemeProvider>(
+      builder: (context, model, child) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(model.isDarkThemeEnabled
+                ? AppAssets.darkBackground
+                : AppAssets.lightBackground),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Scaffold(
+          appBar: islamiAppBar(context),
+          body: buildHadethContent(hadeth.hadethContent),
         ),
       ),
-      child: Scaffold(
-          appBar: islamiAppBar, body: buildHadethContent(hadeth.hadethContent)),
     );
   }
 
@@ -35,15 +42,17 @@ class _HadethDetailsState extends State<HadethDetails> {
         child: Container(
             height: MediaQuery.of(context).size.height * .8,
             width: MediaQuery.of(context).size.width * .8,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(25)),
+              color: Color.fromRGBO(255, 255, 255, 0.3),
+              borderRadius: BorderRadius.circular(25),
+            ),
             child: SingleChildScrollView(
               child: Text(
                 content,
                 textAlign: TextAlign.center,
                 textDirection: TextDirection.rtl,
-                style: AppStyle.titlesTextStyleLight.copyWith(fontSize: 16),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             )),
       );

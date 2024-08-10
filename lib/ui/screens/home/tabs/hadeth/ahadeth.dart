@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../models/hades_details_args.dart';
 import '../../../../utils/app_assets.dart';
 import '../../../../utils/app_colors.dart';
-import '../../../../utils/app_style.dart';
 import 'hades/hades.dart';
 
 class Ahadeth extends StatefulWidget {
-  Ahadeth({super.key});
+  const Ahadeth({super.key});
 
   @override
   State<Ahadeth> createState() => _AhadethState();
@@ -51,13 +51,13 @@ class _AhadethState extends State<Ahadeth> {
                   const SizedBox(
                     height: 8,
                   ),
-                  const Row(
+                  Row(
                     children: [
                       Expanded(
                         child: Text(
-                          "Name",
+                          AppLocalizations.of(context)!.hadeth,
                           textAlign: TextAlign.center,
-                          style: AppStyle.titlesTextStyleLight,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ),
                     ],
@@ -111,7 +111,7 @@ class _AhadethState extends State<Ahadeth> {
                         child: Text(
                       hadethList[index].hadethName,
                       textAlign: TextAlign.center,
-                      style: AppStyle.titlesTextStyleLight,
+                      style: Theme.of(context).textTheme.bodySmall,
                     )),
                   ],
                 ),

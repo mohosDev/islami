@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:project/models/sura_details_args.dart';
 import 'package:project/ui/screens/home/tabs/quran/sura/sura.dart';
 import 'package:project/ui/utils/sura_names.dart';
 
 import '../../../../utils/app_assets.dart';
 import '../../../../utils/app_colors.dart';
-import '../../../../utils/app_style.dart';
 
 class Quran extends StatelessWidget {
   const Quran({super.key});
@@ -38,20 +38,20 @@ class Quran extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  const Row(
+                  Row(
                     children: [
                       Expanded(
                         child: Text(
-                          "Name",
+                          AppLocalizations.of(context)!.sura,
                           textAlign: TextAlign.center,
-                          style: AppStyle.titlesTextStyleLight,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ),
                       Expanded(
                         child: Text(
-                          "Verses",
+                          AppLocalizations.of(context)!.verses,
                           textAlign: TextAlign.center,
-                          style: AppStyle.titlesTextStyleLight,
+                          style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       )
                     ],
@@ -97,14 +97,14 @@ class Quran extends StatelessWidget {
               child: Text(
                 SuraName.suraNamesArabic[index],
                 textAlign: TextAlign.center,
-                style: AppStyle.titlesTextStyleLight,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             )),
             Expanded(
                 child: Text(
               SuraName.versesNumber[index].toString(),
               textAlign: TextAlign.center,
-              style: AppStyle.titlesTextStyleLight,
+              style: Theme.of(context).textTheme.bodySmall,
             ))
           ],
         ),

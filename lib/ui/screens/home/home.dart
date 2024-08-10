@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:project/ui/providers/theme_provider.dart';
 import 'package:project/ui/screens/home/tabs/hadeth/ahadeth.dart';
 import 'package:project/ui/screens/home/tabs/quran/quran.dart';
 import 'package:project/ui/screens/home/tabs/radio/radio.dart';
 import 'package:project/ui/screens/home/tabs/sebha/sebha.dart';
 import 'package:project/ui/screens/home/tabs/setting/settings.dart';
 import 'package:project/ui/utils/app_assets.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/app_colors.dart';
-import '../../utils/app_style.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  Home({super.key});
   static String routeHome = 'home';
 
   @override
@@ -18,87 +20,91 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late ThemeProvider themeProvider;
   int navBarIndex = 0;
   List<Widget> internalWidgets = [
     const Quran(),
     Ahadeth(),
     const Sebha(),
     const RadioIslami(),
-    const Settings(),
+    Settings(),
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(AppAssets.lightBackground),
-          fit: BoxFit.cover,
+    themeProvider = Provider.of(context);
+    return Consumer<ThemeProvider>(
+      builder: (context, model, child) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(model.isDarkThemeEnabled
+                ? AppAssets.darkBackground
+                : AppAssets.lightBackground),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      child: Scaffold(
-        backgroundColor: AppColors.transparent,
-        appBar: islamiAppBar,
-        body: Column(
-          children: [
-            Expanded(child: internalWidgets[navBarIndex]),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 0,
-          type: BottomNavigationBarType.fixed,
-          onTap: (value) => (setState(() {
-            navBarIndex = value;
-          })),
-          currentIndex: navBarIndex,
-          showUnselectedLabels: false,
-          selectedItemColor: Colors.white,
-          backgroundColor: AppColors.primaryLight,
-          items: const [
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(AppAssets.icQuran),
-                size: 40,
+        child: Scaffold(
+          backgroundColor: AppColors.transparent,
+          appBar: islamiAppBar(context),
+          body: Column(
+            children: [
+              Expanded(child: internalWidgets[navBarIndex]),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            elevation: 0,
+            type: BottomNavigationBarType.fixed,
+            onTap: (value) => (setState(() {
+              navBarIndex = value;
+            })),
+            currentIndex: navBarIndex,
+            showUnselectedLabels: false,
+            items: [
+              BottomNavigationBarItem(
+                icon: const ImageIcon(
+                  AssetImage(AppAssets.icQuran),
+                  size: 40,
+                ),
+                label: AppLocalizations.of(context)!.quran,
               ),
-              label: 'Quran',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(AppAssets.icAhadeth),
-                size: 40,
+              BottomNavigationBarItem(
+                icon: const ImageIcon(
+                  AssetImage(AppAssets.icAhadeth),
+                  size: 40,
+                ),
+                label: AppLocalizations.of(context)!.hadeths,
               ),
-              label: 'Hades',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(AppAssets.icSebha),
-                size: 40,
+              BottomNavigationBarItem(
+                icon: const ImageIcon(
+                  AssetImage(AppAssets.icSebha),
+                  size: 40,
+                ),
+                label: AppLocalizations.of(context)!.sebha,
               ),
-              label: 'Sebha',
-            ),
-            BottomNavigationBarItem(
-              icon: ImageIcon(
-                AssetImage(AppAssets.icRadio),
-                size: 40,
+              BottomNavigationBarItem(
+                icon: const ImageIcon(
+                  AssetImage(AppAssets.icRadio),
+                  size: 40,
+                ),
+                label: AppLocalizations.of(context)!.radio,
               ),
-              label: 'Radio',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.settings,
-                size: 33,
+              BottomNavigationBarItem(
+                icon: const Icon(
+                  Icons.settings,
+                  size: 33,
+                ),
+                label: AppLocalizations.of(context)!.settings,
               ),
-              label: 'Settings',
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-AppBar get islamiAppBar => AppBar(
-      title: const Text(
-        "Islami",
-        style: AppStyle.appBarStyleLight,
+AppBar islamiAppBar(BuildContext context) => AppBar(
+      title: Text(
+        AppLocalizations.of(context)!.islami,
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
     );

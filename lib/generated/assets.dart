@@ -117,10 +117,14 @@ class Assets {
   static const String ar98 = 'assets/files/quran/ar/98.txt';
   static const String ar99 = 'assets/files/quran/ar/99.txt';
   static const String arAhadeth = 'assets/files/hades/ar/ahadeth.txt';
+  static const String backgroundsDarkAppBackground =
+      'assets/images/backgrounds/dark_app_background.png';
   static const String backgroundsLightAppBackground =
       'assets/images/backgrounds/light_app_background.png';
   static const String backgroundsSplashBackground =
       'assets/images/backgrounds/splash_background.png';
+  static const String backgroundsSplashDarkBackground =
+      'assets/images/backgrounds/splash_dark_background.png';
   static const String generatedAssets = 'lib/generated/assets.dart';
   static const String hadesHades =
       'lib/ui/screens/home/tabs/hadeth/hades/hades.dart';
@@ -131,11 +135,19 @@ class Assets {
   static const String iconsIcQuran = 'assets/images/icons/ic_quran.png';
   static const String iconsIcRadio = 'assets/images/icons/ic_radio.png';
   static const String iconsIcSebha = 'assets/images/icons/ic_sebha.png';
+  static const String l10nAppAr = 'lib/l10n/app_ar.arb';
+  static const String l10nAppEn = 'lib/l10n/app_en.arb';
   static const String libMain = 'lib/main.dart';
   static const String modelsHadesDetailsArgs =
       'lib/models/hades_details_args.dart';
   static const String modelsSuraDetailsArgs =
       'lib/models/sura_details_args.dart';
+  static const String providersLanguageProvider =
+      'lib/ui/providers/language_provider.dart';
+  static const String providersSettingsProvider =
+      'lib/ui/providers/settings_provider.dart';
+  static const String providersThemeProvider =
+      'lib/ui/providers/theme_provider.dart';
   static const String quranQuran = 'lib/ui/screens/home/tabs/quran/quran.dart';
   static const String radioRadio = 'lib/ui/screens/home/tabs/radio/radio.dart';
   static const String sebhaSebha = 'lib/ui/screens/home/tabs/sebha/sebha.dart';
@@ -155,6 +167,10 @@ class Assets {
       'assets/images/vectors/ahadeth_tab_logo.png';
   static const String vectorsBodyOfSeb7a =
       'assets/images/vectors/body_of_seb7a.png';
+  static const String vectorsBodySebhaDark =
+      'assets/images/vectors/body_sebha_dark.png';
+  static const String vectorsHeadSebhaDark =
+      'assets/images/vectors/head_sebha_dark.png';
   static const String vectorsHeadSebhaLogo =
       'assets/images/vectors/head_sebha_logo.png';
   static const String vectorsQuranTabLogo =

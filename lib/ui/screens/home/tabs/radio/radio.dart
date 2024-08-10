@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:project/ui/utils/app_assets.dart';
-import 'package:project/ui/utils/app_style.dart';
 
 class RadioIslami extends StatelessWidget {
   const RadioIslami({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image(
+          const Image(
             image: AssetImage(AppAssets.radioTabLogo),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text(
             'Holy Quran Radio',
-            style: AppStyle.titlesTextStyleLight,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Icon(

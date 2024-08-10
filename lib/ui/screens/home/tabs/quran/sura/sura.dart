@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:project/models/sura_details_args.dart';
+import 'package:project/ui/providers/theme_provider.dart';
 import 'package:project/ui/utils/app_colors.dart';
-import 'package:project/ui/utils/app_style.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../utils/app_assets.dart';
 import '../../../home.dart';
@@ -27,16 +28,20 @@ class _SuraDetailsState extends State<SuraDetails> {
     if (fileContent.isEmpty) {
       readFile();
     }
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(AppAssets.lightBackground),
-          fit: BoxFit.cover,
+    return Consumer<ThemeProvider>(
+      builder: (context, model, child) => Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(model.isDarkThemeEnabled
+                ? AppAssets.darkBackground
+                : AppAssets.lightBackground),
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
-      child: Scaffold(
-        appBar: islamiAppBar,
-        body: fileContent.isEmpty ? buildCenter() : buildContainer(),
+        child: Scaffold(
+          appBar: islamiAppBar(context),
+          body: fileContent.isEmpty ? buildCenter() : buildContainer(),
+        ),
       ),
     );
   }
@@ -55,7 +60,9 @@ class _SuraDetailsState extends State<SuraDetails> {
         height: MediaQuery.of(context).size.height * 0.8,
         width: MediaQuery.of(context).size.width * 0.8,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(22)),
+          color: Color.fromRGBO(255, 255, 255, 0.3),
+          borderRadius: BorderRadius.circular(22),
+        ),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -63,7 +70,7 @@ class _SuraDetailsState extends State<SuraDetails> {
                 fileContent,
                 textAlign: TextAlign.center,
                 textDirection: TextDirection.rtl,
-                style: AppStyle.titlesTextStyleLight.copyWith(fontSize: 25),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
           ),
