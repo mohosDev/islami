@@ -1,0 +1,20 @@
+{
+  "islami" : "Islami",
+  "language" : "Language",
+  "theme" : "Theme",
+  "quran" : "Quran",
+  "hadeths" : "Hadeths",
+  "radio" : "Radio",
+  "sebha" : "Sebha",
+  "settings" : "Settings",
+  "sura" : "Sura",
+  "verses" : "Verses",
+  "hadeth" : "Hadeth",
+  "sebhaCount" : "Sebha Count",
+  "holyQuranRadio" : "Holy Quran Radio",
+  "praiseAllah" : "Praise ِAllah",
+  "thanksForAllah" : "Thanks for Allah",
+  "allahAkbr" : "Allah is the greatest",
+  "light" : "Light",
+  "dark" : "Dark"
+}

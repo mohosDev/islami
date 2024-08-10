@@ -1,0 +1,20 @@
+{
+  "islami" : "إسلامي",
+  "language" : "اللغة",
+  "theme" : "الوضع",
+  "quran" : "القرآن",
+  "hadeths" : "الاحاديث",
+  "radio" : "الراديو",
+  "sebha" : "السبحة",
+  "settings" : "الاعدادات",
+  "sura" : "سورة",
+  "verses" : "عدد الايات",
+  "hadeth" : "الحديث",
+  "sebhaCount" : "عدد التسبيحات",
+  "holyQuranRadio" : "اذاعة القرآن الكريم",
+  "praiseAllah" : "سبحان الله",
+  "thanksForAllah" : "الحمدلله",
+  "allahAkbr" : "الله أكبر",
+  "light" : "مضئ",
+  "dark" : "مظلم"
+}
